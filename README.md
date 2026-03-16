@@ -1,5 +1,5 @@
 # project_CSE316
-- DEMO: https://faizhasan01.github.io/project_CSE316/
+- DEMO: https://himanshushekharon.github.io/Project_CSE316/
 
 ## 🚀 Disk Scheduling Simulator
 
