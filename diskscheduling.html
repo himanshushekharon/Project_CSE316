@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disk Sheduling</title>
+    <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/animate.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <style>
+        .hover-underline {
+            font-size: 1rem;
+            color: #ffffff;
+            position: relative;
+            width: 100%;
+            display: inline-block;
+        }
+
+        .hover-underline::after,
+        .hover-underline::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, #ff0000, #00ffff);
+            bottom: -5px;
+            left: 0;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.4s ease-out;
+        }
+
+        .hover-underline::before {
+            top: -5px;
+            transform-origin: left;
+        }
+
+        .hover-underline:hover::after,
+        .hover-underline:hover::before {
+            transform: scaleX(1);
+        }
+
+
+
+        .columnscontainer {
+            width: 1200px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-gap: 18px;
+            margin: 0 auto;
+        }
+
+        .card {
+            position: relative;
+            width: 270px;
+            height: 300px;
+            margin: 0;
+            background: #fff;
+            box-shadow: 0 15px 60px rgba(0, 0, 0, .5);
+            border-radius: 15px;
+        }
+
+        .card .face {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card .face.face1 {
+            box-sizing: border-box;
+            padding: 20px;
+        }
+
+        .card .face.face1 h2 {
+            margin: 0;
+            padding: 0;
+        }
+
+        .card .face.face1 .content {
+            font-size: 1.2em;
+            margin: 0;
+            padding: 0 0 1em 0;
+            font-weight: 500;
+        }
+
+        .card .face.face2 {
+            background: #111;
+            transition: 0.5s;
+        }
+
+        .card:nth-child(1) .face.face2 {
+            background: linear-gradient(45deg, #3603adee, #f7308de4);
+            border-radius: 15px;
+        }
+
+        .card:nth-child(2) .face.face2 {
+            background: linear-gradient(45deg, #ccff00e3, #09adffe1);
+            border-radius: 15px;
+        }
+
+        .card:nth-child(3) .face.face2 {
+            background: linear-gradient(45deg, #e91e62d3, #ffeb3bd4);
+            border-radius: 15px;
+        }
+
+        .card:nth-child(4) .face.face2 {
+            background: linear-gradient(45deg, #ff5622e4, #03a8f4dd);
+            border-radius: 15px;
+        }
+
+        .card:hover .face.face2 {
+            height: 40px;
+            border-radius: 0 0 15px 15px;
+        }
+
+        .card .face.face2:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px 0 0 15px;
+        }
+
+        .card .face.face2 h2 {
+            margin: 0;
+            padding: 0;
+            font-size: 4em;
+            color: #fff;
+            transition: 0.5s;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+        }
+
+        .card:hover .face.face2 h2 {
+            font-size: 2em;
+        }
+    </style>
+</head>
+
+<body style="background-image: url(./image/algorithm.webp);">
+
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="diskscheduling.html">
+                <div class="hover-border">Disk Scheduling</div>
+            </a>
+            <div class="divider"></div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">
+                            <div class="hover-border">Home</div>
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Algorithm
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="diskscheduling.html">Disk Scheduling</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="compare.html"><span class="hover-border">Compare</span></a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html"><span class="hover-border">About Us</span></a>
+                    </li>
+
+                </ul>
+
+
+            </div>
+        </div>
+    </nav>
+
+    <div class="block1">
+        <div class="overlay"></div>
+        <div class="heading">
+            <h1 class="animate__animated animate__slideInUp" data-aos="fade-in" style="text-align: center;">DISK
+                SCHEDULING
+            </h1>
+        </div>
+        <div class="typing animate__animated animate__slideInUp">
+            <h2 style="margin: 10px; font-weight: 700;">Includes: </h2>
+            <span class="type-writer" style="margin: 10px;" data-wait="2000"
+                data-words='["FCFS", "SSTF", "SCAN", "C-SCAN", "LOOK", "C-LOOK"]'></span>
+        </div>
+
+    </div>
+
+    <div class="info-block">
+        <div class="mid-heading-wrapper">
+            <div class="mid-heading">
+                <h1 style="margin: 0px;">About</h1>
+            </div>
+        </div>
+
+        <div class="infocard">
+            <div class="infocard-body">
+                <div class="hover-underline">
+                    <p>A process needs two type of time, CPU time and IO time.</p>
+
+                    <p>For I/O,it requests the Operating system to access the disk.</p>
+
+                    <p>Disk scheduling is done by operating systems to schedule I/O requests arriving for the disk.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="infocard">
+            <div class="infocard-body">
+                <div class="hover-underline">
+                    <p style="font-weight: 700;">Disk Scheduling is important because:</p>
+
+                    <p>1. Multiple I/O requests may arrive by different processes and only one I/O requests can be
+                        served at
+                        a time by the disk controller.Thus other I/O requests need to wait in the waiting queue and need
+                        to
+                        be scheduled.</p>
+
+                    <p>2.Two or more request may be far from each other so can result in the greater disk arm movement.
+                    </p>
+
+                    <p>3.Hard drives need to be acessed in an efficient manner as they are the slowest parts of the
+                        computer
+                        system.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="infocard">
+            <div class="infocard-body">
+                <div class="hover-underline">
+                    <p style="font-weight: 700;">Some of the important terms:</p>
+
+                    <p style="font-weight: 700;">Seek Time:</p>
+                    <p>Seek time is the time taken to locate the disk arm to a specified track where the data is to be
+                        read
+                        or write. So the disk scheduling algorithm that gives minimum average seek time is better.</p>
+
+                    <p style="font-weight: 700;">Rotational Latency:</p>
+                    <p>Rotational Latency is the time taken by the desired sector of disk to rotate into a position so
+                        that
+                        it can access the read/write heads. The disk scheduling algorithm that gives minimum rotational
+                        latency is better.</p>
+
+                    <p style="font-weight: 700;">Transfer Time:</p>
+                    <p> Transfer time is the time to transfer the data. It depends on the rotating speed of the disk and
+                        number of bytes to be transferred.</p>
+
+                    <p style="font-weight: 700;">Disk Access Time = Seek Time + Rotational Latency + Tranfer time</p>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+    <div class="mid-blockDSPR">
+        <div class="mid-heading-wrapper">
+            <div class="mid-heading">
+                <h1 class="hover-border">Algorithms</h1>
+            </div>
+        </div>
+
+
+        <div class="columnscontainer">
+
+            <!-- #FCFS -->
+            <div class="card">
+                <div class="face face1">
+                    <div class="content">
+                        <a href="fcfs.html" style="text-decoration: none;">
+                            <div class="card text-white bg-dark algo-cards"
+                                style="width: 14rem; height: 14rem; margin-left: 40px; margin-right: 40px;">
+                                <div class="algo-heading">FCFS</div>
+                                <div class="card-body" style="overflow-y: scroll;">
+                                    <p class="card-text">Requests are served in the order that they arrive.</p>
+                                </div>
+
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="face face2">
+                    <h2>FCFS</h2>
+                </div>
+            </div>
+
+            <!-- #SSTF -->
+
+            <div class="card">
+                <div class="face face1">
+                    <div class="content">
+                        <a href="sstf.html" style="text-decoration: none;">
+                            <div class="card text-white bg-dark algo-cards"
+                                style="width: 14rem; height: 14rem; margin-left: 40px; margin-right: 40px;">
+                                <div class="algo-heading">SSTF</div>
+                                <div class="card-body" style="overflow-y: scroll;">
+                                    <p class="card-text">Request with lowest seek time is executed first.</p>
+                                </div>
+
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="face face2">
+                    <h2>SSTF</h2>
+                </div>
+            </div>
+
+            <!-- #SCAN -->
+            <div class="card">
+                <div class="face face1">
+                    <div class="content">
+                        <a href="scan.html" style="text-decoration: none;">
+                            <div class="card text-white bg-dark algo-cards"
+                                style="width: 14rem; height: 14rem; margin-left: 40px; margin-right: 40px;">
+                                <div class="algo-heading">SCAN</div>
+                                <div class="card-body" style="overflow-y: scroll;">
+                                    <p class="card-text">All requests arriving in the path are addressed. Head moves
+                                        till the end
+                                        track.
+                                    </p>
+                                </div>
+                                <div class="algo-card-footer">
+
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="face face2">
+                    <h2>SCAN</h2>
+                </div>
+            </div>
+
+            <!-- #C-SCAN -->
+            <div class="card">
+                <div class="face face1">
+                    <div class="content">
+                        <a href="cscan.html" style="text-decoration: none;">
+                            <div class="card text-white bg-dark algo-cards"
+                                style="width: 14rem; height: 14rem; margin-left: 40px; margin-right: 40px;">
+                                <div class="algo-heading">C-SCAN</div>
+                                <div class="card-body" style="overflow-y: scroll;">
+                                    <p class="card-text">Similar to that of SCAN. Requests are addressed when the
+                                        head moves in a
+                                        single direction.</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="face face2">
+                    <h2>C-SCAN</h2>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <!-- footer -->
+        <div class="diskSchedulingFooter">
+
+            <div id="footer">
+                <div class="footer-dark">
+                    <footer>
+                        <div id="footer-container" class="footercontainer">
+                            <div class="footerflex-1">
+                                <div class="footerrow">
+
+                                    <!-- first nav -->
+                                    <div class="footerpanel-group" id="accordion">
+                                        <div class="panel panel-default" id="footerpanel">
+                                            <div class="footerpanel-heading">
+                                                <h4 class="footerpanel-title accordion-button" data-bs-toggle="collapse"
+                                                    data-bs-target="#collapseOne,#collapseTwo,#collapseThree,#collapseFour,#collapseFive"
+                                                    aria-expanded="false" aria-controls="collapseOne">More
+
+                                                </h4>
+                                            </div>
+                                            <div id="collapseOne" class="panel-collapse collapse"
+                                                aria-labelledby="headingOne" data-bs-parent="#accordion">
+                                                <div class="footercontent">
+                                                    <ul style="list-style-type: none;">
+                                                        <li><a href="index.html">Home</a></li>
+                                                        <li><a href="about.html">About Us</a></li>
+                                                        <li><a href="diskscheduling.html">Disk Scheduling</a></li>
+
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- second nav -->
+                                    <div class="footerpanel-group" id="accordion">
+                                        <div class="panel panel-default" id="footerpanel">
+                                            <div class="footerpanel-heading">
+                                                <h4 class="footerpanel-title accordion-button" data-bs-toggle="collapse"
+                                                    data-bs-target="#collapseOne,#collapseTwo,#collapseThree,#collapseFour,#collapseFive"
+                                                    aria-expanded="false" aria-controls="collapseOne">Disc Scheduling
+
+                                                </h4>
+                                            </div>
+                                            <div id="collapseThree" class="panel-collapse collapse"
+                                                aria-labelledby="headingOne" data-bs-parent="#accordion">
+                                                <div class="footercontent">
+                                                    <ul style="list-style-type: none;">
+                                                        <li><a href="fcfs.html">FCFS</a></li>
+                                                        <li><a href="sstf.html">SSTF</a></li>
+                                                        <li><a href="scan.html">SCAN</a></li>
+                                                        <li><a href="cscan.html">C-SCAN</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+
+                                </div>
+                            </div>
+                            <div
+                                style="padding-top: 10px; width: 100%; display: flex; align-items: center; justify-content: center;">
+                                <span style="margin: 20px;">
+                                    <a href="https://github.com/Faizhasan01/project_CSE316.git" target="_blank"
+                                        style="margin: 10px;"><svg xmlns="http://www.w3.org/2000/svg" width="35"
+                                            height="35" fill="white" class="bi bi-github" viewBox="0 0 16 16">
+                                            <path
+                                                d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+                                        </svg></a>
+                                </span>
+                                <span style="font-size: 2.5rem; margin: 20px 0px 20px 0px; ">|</span>
+                                <span class="copyright"
+                                    style="margin: 20px; display: flex; justify-content: center; align-items: center; padding: 0px;">OS
+                                    Project</span>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+            </div>
+        </div>
+        <script src="js/typewriter.js"></script>
+
+</body>
+
+</html>

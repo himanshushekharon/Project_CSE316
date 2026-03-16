@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Disk Scheduler</title>
+  <link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="css/animation.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/homepage.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+</head>
+
+<body style="background-image: url(./image/bg.svg)">
+  <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark animate__animated animate__fadeInDown">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">
+
+        <div class="hover-border">Disk Scheduling</div>
+      </a>
+      <div class="divider"></div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Algorithms
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="fcfs.html">FCFS</a></li>
+              <li><a class="dropdown-item" href="sstf.html">SSTF</a></li>
+              <li><a class="dropdown-item" href="scan.html">SCAN</a></li>
+              <li><a class="dropdown-item" href="cscan.html">C-SCAN</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="about.html"><span class="hover-border">About Us</span></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="home-first-block">
+    <div class="home-info animate__animated animate__fadeInLeft">
+      <div class="home-question-title">Disk Scheduling Simulator</div>
+      <p class="home-question-answer">
+        Efficient disk scheduling is crucial for optimizing system performance
+        by minimizing seek time and improving throughput. Our Disk Scheduling
+        Simulator allows users to visualize and compare popular disk
+        scheduling algorithms.
+      </p>
+      <div class="typing animate__animated animate__slideInUp">
+        Module: (
+        <span class="type-writer" style="margin: 10px" data-wait="2000" data-words='["Disk Scheduling"]'></span>
+        )
+      </div>
+    </div>
+    <div class="home-algo-info animate__animated animate__fadeInRight">
+      <iframe class="osvideo" width="450" height="253"
+        src="https://www.youtube.com/embed/videoseries?list=PLRMqyuLDxuZV8LiI0KuoAWwOGJvvcnMse"
+        title="YouTube video player" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
+    </div>
+  </div>
+  <div class="home-second-block">
+    <div class="home-algo-basic-info">
+      <div class="home-algo-title" id="title1" style="text-align: right" data-aos="zoom-in">
+        Disk Scheduling
+      </div>
+      <div class="home-specififc-algo-info" data-aos="fade-right">
+        <div class="card text-dark bg-light mb-3 home-card animate__animated animate__zoomIn">
+          <div class="card-header home-card-header">Basic Information</div>
+          <div class="card-body home-card-body hover-move" style="align-items: flex-end">
+            <p class="card-text home-card-text">
+              Disk scheduling is the process of managing and optimizing the
+              order in which disk I/O requests are serviced. Since the
+              mechanical movement of the disk's read/write head takes time,
+              efficient scheduling helps reduce seek time, improves system
+              throughput, and enhances overall performance..
+            </p>
+            <a href="diskscheduling.html" class="btn btn-light home-algo-button">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                class="bi bi-check-circle home-tick" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                <path
+                  d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z" />
+              </svg>
+              Learn More
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="home-algo-title" id="title" style="text-align: right" data-aos="zoom-in">
+        Disk Scheduling
+      </div>
+    </div>
+  </div>
+
+  <!-- footer -->
+  <div id="foooter" class="animate__animated animate__fadeInUp">
+    <div class="footer-dark">
+      <footer>
+        <div id="footer-container" class="footercontainer">
+          <div class="footerflex-1">
+            <div class="footerrow">
+
+              <!-- first nav -->
+              <div class="footerpanel-group" id="accordion">
+                <div class="panel panel-default" id="footerpanel">
+                  <div class="footerpanel-heading">
+                    <h4 class="footerpanel-title accordion-button" data-bs-toggle="collapse"
+                      data-bs-target="#collapseOne,#collapseTwo,#collapseThree,#collapseFour,#collapseFive"
+                      aria-expanded="false" aria-controls="collapseOne">
+                      More
+                    </h4>
+                  </div>
+                  <div id="collapseOne" class="panel-collapse collapse" aria-labelledby="headingOne"
+                    data-bs-parent="#accordion">
+                    <div class="footercontent">
+                      <ul style="list-style-type: none">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li>
+                          <a href="diskscheduling.html">Disk Scheduling</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- second nav -->
+              <div class="footerpanel-group" id="accordion">
+                <div class="panel panel-default" id="footerpanel">
+                  <div class="footerpanel-heading">
+                    <h4 class="footerpanel-title accordion-button" data-bs-toggle="collapse"
+                      data-bs-target="#collapseOne,#collapseTwo,#collapseThree,#collapseFour,#collapseFive"
+                      aria-expanded="false" aria-controls="collapseOne">
+                      Disc Scheduling
+                    </h4>
+                  </div>
+                  <div id="collapseThree" class="panel-collapse collapse" aria-labelledby="headingOne"
+                    data-bs-parent="#accordion">
+                    <div class="footercontent">
+                      <ul style="list-style-type: none">
+                        <li><a href="fcfs.html">FCFS</a></li>
+                        <li><a href="sstf.html">SSTF</a></li>
+                        <li><a href="scan.html">SCAN</a></li>
+                        <li><a href="cscan.html">C-SCAN</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="
+                padding-top: 10px;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              ">
+            <span style="margin: 20px">
+              <a href="https://github.com/Faizhasan01/project_CSE316.git" target="_blank" style="margin: 10px">
+                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="white" class="bi bi-github"
+                  viewBox="0 0 16 16">
+                  <path
+                    d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+                </svg>
+              </a>
+            </span>
+
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+  <script src="js/home_animate.js"></script>
+  <script type="text/javascript">
+    AOS.init({
+      duration: 1000,
+    });
+  </script>
+</body>
+
+</html>
